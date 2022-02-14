@@ -785,7 +785,7 @@ suscan_source_detect_devices(void)
 {
   SoapySDRKwargs *soapy_dev_list = NULL;
   suscan_source_device_t *dev = NULL;
-  size_t soapy_dev_len;
+  size_t soapy_dev_len = 0;
   unsigned int i;
   SUBOOL mutex_acquired = SU_FALSE;
   SUBOOL ok = SU_FALSE;
@@ -799,11 +799,11 @@ suscan_source_detect_devices(void)
     setenv("SOAPY_SDR_PLUGIN_PATH", soapysdr_module_path, SU_TRUE);
 
   suscan_source_disable_stderr();
-
+/*
   SU_TRYCATCH(
       soapy_dev_list = SoapySDRDevice_enumerate(NULL, &soapy_dev_len),
       goto done);
-
+*/
   for (i = 0; i < soapy_dev_len; ++i) {
     SU_TRYCATCH(
         dev = suscan_source_device_assert(
